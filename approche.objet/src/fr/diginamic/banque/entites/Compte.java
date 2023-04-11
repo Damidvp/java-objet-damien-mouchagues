@@ -24,4 +24,8 @@ public class Compte {
 	public void crediter(int credit) {
 		this.soldeCompte += credit;
 	}
+	
+	public String toString() {
+		return "Solde du compte n° " + this.numeroCompte + " : " + this.soldeCompte + " euros";
+	}
 }
