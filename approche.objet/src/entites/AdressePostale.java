@@ -1,4 +1,4 @@
-package approche.objet.entites;
+package entites;
 
 public class AdressePostale {
 	private int numeroDeRue;
@@ -11,5 +11,21 @@ public class AdressePostale {
 		this.libelleRue = libelleRue;
 		this.codePostal = codePostal;
 		this.ville = ville;
+	}
+	
+	public int getNumeroDeRue() {
+		return this.numeroDeRue;
+	}
+	
+	public String getLibelleRue() {
+		return this.libelleRue;
+	}
+
+	public int getCodePostal() {
+		return this.codePostal;
+	}
+
+	public String getVille() {
+		return this.ville;
 	}
 }
