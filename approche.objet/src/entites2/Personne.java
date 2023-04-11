@@ -33,4 +33,18 @@ public class Personne {
 	public void setNom(String nom){
 		this.nom = nom;
 	}
+	
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+	
+	public void setAdresse(AdressePostale adresse) {
+		this.adresse = adresse;
+	}
+	
+	public String getNomEtPrenomEnMajuscules() {
+		String maj = this.prenom + " " + this.nom;
+		return maj.toUpperCase();
+		
+	}
 }
