@@ -43,8 +43,8 @@ public class Personne {
 	}
 	
 	public void getNomEtPrenomEnMajuscules() {
-		String maj = this.prenom + " " + this.nom;
-		System.out.println(maj.toUpperCase());
+		String nomMaj = this.nom.toUpperCase();
+		System.out.println(nomMaj + this.prenom);
 		
 	}
 }
