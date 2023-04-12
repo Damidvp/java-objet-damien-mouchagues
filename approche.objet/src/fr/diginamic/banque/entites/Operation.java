@@ -1,8 +1,8 @@
 package fr.diginamic.banque.entites;
 
 public abstract class Operation {
-	private String date;
-	private int montantOperation;
+	protected String date;
+	protected int montantOperation;
 	
 	public Operation(String date, int montantOperation) {
 		this.date = date;
