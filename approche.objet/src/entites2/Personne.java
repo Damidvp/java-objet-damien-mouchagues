@@ -42,9 +42,9 @@ public class Personne {
 		this.adresse = adresse;
 	}
 	
-	public String getNomEtPrenomEnMajuscules() {
+	public void getNomEtPrenomEnMajuscules() {
 		String maj = this.prenom + " " + this.nom;
-		return maj.toUpperCase();
+		System.out.println(maj.toUpperCase());
 		
 	}
 }

@@ -13,8 +13,10 @@ public class TestPersonne {
 		tabPersonnes.add(personne1);
 		tabPersonnes.add(personne2);
 		for(Personne unePersonne : tabPersonnes) {
-			System.out.println(unePersonne.getNomEtPrenomEnMajuscules() + " - " + unePersonne.getAdresse().getNumeroDeRue() +
-					" " + unePersonne.getAdresse().getLibelleRue() + " " + unePersonne.getAdresse().getCodePostal() + " " + unePersonne.getAdresse().getVille());
+			unePersonne.getNomEtPrenomEnMajuscules();
+			System.out.println(unePersonne.getNom() + " " + unePersonne.getPrenom() + " - " + unePersonne.getAdresse().getNumeroDeRue() +
+					" " + unePersonne.getAdresse().getLibelleRue() + " " + unePersonne.getAdresse().getCodePostal() + " " + 
+					unePersonne.getAdresse().getVille());
 		}
 		
 	}
