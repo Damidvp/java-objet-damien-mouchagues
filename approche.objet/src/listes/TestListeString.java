@@ -1,6 +1,7 @@
 package listes;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class TestListeString {
 
@@ -36,9 +37,11 @@ public class TestListeString {
 		}
 		
 		System.out.println("Villes ne commencant pas par 'N'");
-		for(int i=0; i<arrayStr.size(); i++) {
-			if(arrayStr.get(i).charAt(0) == 'N') {
-				arrayStr.remove(i);
+		Iterator<String> iterator = arrayStr.iterator();
+		while(iterator.hasNext()) {
+			String element = iterator.next();
+			if(element.charAt(0) == 'N') {
+				iterator.remove();
 			}
 		}
 		for(String unStr : arrayStr) {
