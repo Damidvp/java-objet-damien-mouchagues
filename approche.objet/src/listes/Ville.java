@@ -25,4 +25,7 @@ public class Ville {
 		return this.nom + " (" + this.nbHabitants + " habitants)";
 	}
 	
+	public boolean equals(Ville uneVille) {
+		return (this.nom.equals(uneVille.getNom()) && this.nbHabitants == uneVille.getNbHabitants());
+	}
 }
