@@ -1,9 +1,17 @@
 package sets;
 
+import java.lang.reflect.Field;
+
+import annotations.ToString;
+
 public class Pays {
 	
+	@ToString(separator=" -> ", uppercase=true)
 	private String nom;
+	
 	private int nbHabitants;
+	
+	@ToString(separator=" $")
 	private int pibParHabitant;
 	
 	public Pays(String nom, int nbHabitants, int pibParHabitant) {
@@ -37,7 +45,26 @@ public class Pays {
 	}
 	
 	public String toString() {
-		return this.nom + " - " + this.nbHabitants + " hab, PIB : " + this.pibParHabitant;
+		Class<?> classe = this.getClass();
+		Field[] fields = classe.getDeclaredFields();
+		String retour = "";
+		for(Field unField : fields) {
+			if(unField.isAnnotationPresent(ToString.class)) {
+				try {
+					if(unField.getAnnotation(ToString.class).uppercase()) {
+						retour += unField.get(this).toString().toUpperCase();
+					} else {
+						retour += unField.get(this);
+					}
+					retour += unField.getAnnotation(ToString.class).separator();
+				} catch (IllegalArgumentException e) {
+					e.printStackTrace();
+				} catch (IllegalAccessException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return retour;
 	}
 	
 	public long getPibTotal() {
