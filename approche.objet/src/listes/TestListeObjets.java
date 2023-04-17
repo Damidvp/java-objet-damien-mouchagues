@@ -2,19 +2,21 @@ package listes;
 
 import java.util.ArrayList;
 
+import fr.diginamic.testenumeration.Continent;
+
 public class TestListeObjets {
 
 	public static void main(String[] args) {
 		ArrayList<Ville> arrayVilles = new ArrayList<Ville>();
 		
-		arrayVilles.add(new Ville("Nice", 343000));
-		arrayVilles.add(new Ville("Carcassonne", 47800));
-		arrayVilles.add(new Ville("Narbonne", 53400));
-		arrayVilles.add(new Ville("Lyon", 484000));
-		arrayVilles.add(new Ville("Foix", 9700));
-		arrayVilles.add(new Ville("Pau", 77200));
-		arrayVilles.add(new Ville("Marseille", 850700));
-		arrayVilles.add(new Ville("Tarbes", 40600));
+		arrayVilles.add(new Ville("Nice", 343000, Continent.EUROPE));
+		arrayVilles.add(new Ville("Carcassonne", 47800, Continent.EUROPE));
+		arrayVilles.add(new Ville("Narbonne", 53400, Continent.EUROPE));
+		arrayVilles.add(new Ville("Lyon", 484000, Continent.EUROPE));
+		arrayVilles.add(new Ville("Foix", 9700, Continent.EUROPE));
+		arrayVilles.add(new Ville("Pau", 77200, Continent.EUROPE));
+		arrayVilles.add(new Ville("Marseille", 850700, Continent.EUROPE));
+		arrayVilles.add(new Ville("Tarbes", 40600, Continent.EUROPE));
 		
 		int maxHab = 0;
 		Ville villeMaxHab = null;
