@@ -1,5 +1,7 @@
 package fr.diginamic.automates;
 
+import java.util.Scanner;
+
 import fr.diginamic.automates.entites.Cellule;
 import fr.diginamic.automates.entites.Grid;
 
@@ -7,19 +9,66 @@ public class JeuDeLaVie {
 
 	public static void main(String[] args) {
 		
-		int gridWidth = 17;
-		int gridHeight = 17;
-		Cellule[][] cellulesInitiales = new Cellule[gridHeight][gridWidth];
-		
-		//genererRandom(gridWidth, gridHeight, cellulesInitiales);
-		//genererClignoteur(gridWidth, gridHeight, cellulesInitiales);
-		genererSpaceship(gridWidth, gridHeight, cellulesInitiales);
-		//genererPulsar(gridWidth, gridHeight, cellulesInitiales);
-		Grid gridInitial = new Grid(gridWidth, gridHeight, cellulesInitiales);
-		Grid nouveauGrid = new Grid();
+		Scanner scanner = new Scanner(System.in);
 		
 		System.out.println("*** JEU DE LA VIE ***");
 		System.out.println();
+		
+		System.out.println("Définir une hauteur de grille : ");
+		int choixTailleHaut = Integer.parseInt(scanner.nextLine());
+		
+		System.out.println("Définir une longueur de grille : ");
+		int choixTailleLong = Integer.parseInt(scanner.nextLine());
+		
+		Cellule[][] cellulesInitiales = new Cellule[choixTailleHaut][choixTailleLong];
+		
+		System.out.println();
+		
+		boolean paramsOK = false;
+		while(!paramsOK) {
+			afficherChoix();
+			String choixGeneration = scanner.nextLine();
+			switch(choixGeneration) {
+			default:
+				System.out.println("Erreur : choix de menu non valide");
+				break;
+			case "1":
+				genererRandom(choixTailleLong, choixTailleHaut, cellulesInitiales);
+				paramsOK = true;
+				break;
+			case "2":
+				if((choixTailleLong < 3) && (choixTailleHaut < 3)) {
+					System.out.println("Génération impossible (taille < 3)");
+					System.exit(-1);
+				} else {
+					genererClignoteur(choixTailleLong, choixTailleHaut, cellulesInitiales);
+				}
+				paramsOK = true;
+				break;
+			case "3":
+				if((choixTailleLong < 8) && (choixTailleHaut < 8)) {
+					System.out.println("Génération impossible (taille < 8)");
+					System.exit(-1);
+				} else {
+					genererSpaceship(choixTailleLong, choixTailleHaut, cellulesInitiales);
+				}
+				paramsOK = true;
+				break;
+			case "4":
+				if((choixTailleLong < 17) && (choixTailleHaut < 17)) {
+					System.out.println("Génération impossible (taille < 17)");
+					System.exit(-1);
+				} else {
+					genererPulsar(choixTailleLong, choixTailleHaut, cellulesInitiales);
+				}
+				paramsOK = true;
+				break;
+			}
+		}
+		
+		Grid gridInitial = new Grid(choixTailleLong, choixTailleHaut, cellulesInitiales);
+		Grid nouveauGrid = new Grid();
+		
 		afficherGeneration(gridInitial);
 		
 		while(true) {
@@ -28,7 +77,7 @@ public class JeuDeLaVie {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			nouveauGrid = new Grid(gridWidth, gridHeight, evolutionGeneration(gridInitial).getCellules());
+			nouveauGrid = new Grid(choixTailleLong, choixTailleHaut, evolutionGeneration(gridInitial).getCellules());
 			afficherGeneration(nouveauGrid);
 			gridInitial = nouveauGrid;
 		}
@@ -266,8 +315,8 @@ public class JeuDeLaVie {
 			for(int j=0; j<width; j++) {
 				boolean isDead = true;
 
-				if(i==5) {
-					if(j>9 && j<13) {
+				if(i==1) {
+					if(j<3 && j>=0) {
 						isDead = false;
 					}
 				}
@@ -311,6 +360,13 @@ public class JeuDeLaVie {
 				init[i][j] = new Cellule(i, j, isDead);
 			}
 		}
+	}
+	
+	public static void afficherChoix() {
+		System.out.println("1. Générer une grille aléatoire de cellules");
+		System.out.println("2. Générer un clignoteur (taille de grille <= 3)");
+		System.out.println("3. Générer un spaceship (taille de grille <= 8");
+		System.out.println("4. Générer un pulsar (taille de grille <= 17)");
 	}
 
 }
