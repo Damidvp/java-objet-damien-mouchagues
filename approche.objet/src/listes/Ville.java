@@ -47,6 +47,6 @@ public class Ville {
 			return false;
 		}
 		Ville autre = (Ville) object;
-		return this.nom.equals(autre.getNom());
+		return (this.nom.equals(autre.getNom()) && (this.nbHabitants == autre.getNbHabitants()));
 	}
 }
