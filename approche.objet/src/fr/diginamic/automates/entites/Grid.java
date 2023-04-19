@@ -1,7 +1,5 @@
 package fr.diginamic.automates.entites;
 
-import java.util.ArrayList;
-
 public class Grid {
 	private int width;
 	private int height;
@@ -13,6 +11,12 @@ public class Grid {
 		this.cellules = cellules;
 	}
 	
+	public Grid() {
+		this.width = 0;
+		this.height = 0;
+		this.cellules = null;
+	}
+
 	public int getWidth() {
 		return width;
 	}
