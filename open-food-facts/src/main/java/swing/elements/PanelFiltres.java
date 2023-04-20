@@ -2,13 +2,13 @@ package swing.elements;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Insets;
 import java.io.IOException;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.border.TitledBorder;
 
 import swing.services.Categories;
 import swing.services.Marques;
@@ -17,11 +17,13 @@ public class PanelFiltres extends JPanel {
 	
 	public PanelFiltres() throws IOException {
 		super(new GridBagLayout());
+		
+		setBorder(new TitledBorder("Rechercher"));
+		
 		GridBagConstraints position = new GridBagConstraints();
 		
 		position.fill = GridBagConstraints.BOTH;
 		position.anchor = GridBagConstraints.CENTER;
-		position.insets = new Insets(15, 15, 30, 30);
 		position.weightx = 2;
 		position.weighty = 3;
 		
@@ -39,7 +41,7 @@ public class PanelFiltres extends JPanel {
 		position.gridy = 2;
 		position.gridwidth = 1;
 		this.add(getPanelRechercheMarque() , position);
-
+		
 		position.gridx = 1;
 		position.gridy = 2;
 		this.add(getPanelGrade(), position);
@@ -50,6 +52,8 @@ public class PanelFiltres extends JPanel {
 		JPanel panel = new JPanel();
 		JLabel labelRech = new JLabel("Rechercher :");
 		JTextField textRech = new JTextField(50);
+		
+		textRech.setSize(30, 5);
 		
 		panel.add(labelRech);
 		panel.add(textRech);

@@ -14,6 +14,9 @@ public class TableProduits extends JTable{
 		super(getProduits(), getNomColonnes());
 		setDefaultEditor(Object.class, null);
 		setAutoCreateRowSorter(true);
+		
+		setComponentPopupMenu(new PopUpTable());
+		addMouseListener(new TableMouseListener(this));
 	}
 	
 	public static String[] getNomColonnes() {

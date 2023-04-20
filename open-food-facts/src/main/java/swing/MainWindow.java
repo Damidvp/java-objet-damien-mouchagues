@@ -2,7 +2,7 @@ package swing;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
+import java.awt.Insets;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
@@ -32,9 +32,10 @@ public class MainWindow extends JFrame {
 		
 		GridBagConstraints position = new GridBagConstraints();
 		position.fill = GridBagConstraints.BOTH;
-		position.anchor = GridBagConstraints.CENTER;
+		
 		position.weightx = 1;
-		position.weighty = 3;
+		position.weighty = 1;
+		position.insets = new Insets(10, 0, 0, 0);
 		
 		position.gridx = 0;
 		position.gridy = 0;
@@ -44,9 +45,11 @@ public class MainWindow extends JFrame {
 		position.gridheight = 2;
 		add(new ListeProduits(), position);
 		
+		position.anchor = GridBagConstraints.CENTER;
+		
 		addWindowListener(exit);
 		
-		setSize(1000, 800);
+		setSize(1200, 720);
 		setLocationRelativeTo(null); //Centre la fenêtre sur l'écran
 		setResizable(false);
 		setVisible(true);
