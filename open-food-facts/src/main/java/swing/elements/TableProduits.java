@@ -12,6 +12,8 @@ public class TableProduits extends JTable{
 	
 	public TableProduits() throws IOException {
 		super(getProduits(), getNomColonnes());
+		setDefaultEditor(Object.class, null);
+		setAutoCreateRowSorter(true);
 	}
 	
 	public static String[] getNomColonnes() {
