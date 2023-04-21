@@ -15,6 +15,18 @@ import swing.services.Marques;
 
 public class PanelFiltres extends JPanel {
 	
+	private JLabel labelRechGlobal = new JLabel("Rechercher :");
+	private JTextField textRech = new JTextField(50);
+	
+	private JLabel labelRechCateg = new JLabel("Catégorie :");
+	private JComboBox<String> listCategories = new JComboBox<String>();
+	
+	private JLabel labelRechMarq = new JLabel("Marque :");
+	private JComboBox<String> listMarques = new JComboBox<String>();
+	
+	private JLabel labelRechGrade = new JLabel("Grade minimum : ");
+	private JComboBox<String> listGrades = new JComboBox<String>();
+	
 	public PanelFiltres() throws IOException {
 		super(new GridBagLayout());
 		
@@ -45,17 +57,14 @@ public class PanelFiltres extends JPanel {
 		position.gridx = 1;
 		position.gridy = 2;
 		this.add(getPanelGrade(), position);
-		
 	}
 	
 	public JPanel getPanelRechercheGlobale() {
 		JPanel panel = new JPanel();
-		JLabel labelRech = new JLabel("Rechercher :");
-		JTextField textRech = new JTextField(50);
 		
 		textRech.setSize(30, 5);
 		
-		panel.add(labelRech);
+		panel.add(labelRechGlobal);
 		panel.add(textRech);
 		
 		return panel;
@@ -63,8 +72,6 @@ public class PanelFiltres extends JPanel {
 	
 	public JPanel getPanelRechercheCategorie() throws IOException {
 		JPanel panel = new JPanel();
-		JLabel labelRech = new JLabel("Catégorie :");
-		JComboBox<String> listCategories = new JComboBox<String>();
 		
 		listCategories.addItem("---");
 		Categories categories = new Categories();
@@ -72,7 +79,7 @@ public class PanelFiltres extends JPanel {
 			listCategories.addItem(categories.getAllCategories().get(i));
 		}
 		
-		panel.add(labelRech);
+		panel.add(labelRechCateg);
 		panel.add(listCategories);
 		
 		return panel;
@@ -80,8 +87,6 @@ public class PanelFiltres extends JPanel {
 	
 	public JPanel getPanelRechercheMarque() throws IOException {
 		JPanel panel = new JPanel();
-		JLabel labelRech = new JLabel("Marque :");
-		JComboBox<String> listMarques = new JComboBox<String>();
 		
 		listMarques.setSize(20, 3);
 		listMarques.addItem("---");
@@ -90,7 +95,7 @@ public class PanelFiltres extends JPanel {
 			listMarques.addItem(marques.getAllCategories().get(i));
 		}
 		
-		panel.add(labelRech);
+		panel.add(labelRechMarq);
 		panel.add(listMarques);
 		
 		return panel;
@@ -98,8 +103,6 @@ public class PanelFiltres extends JPanel {
 	
 	public JPanel getPanelGrade() {
 		JPanel panel = new JPanel();
-		JLabel labelRech = new JLabel("Grade minimum : ");
-		JComboBox<String> listGrades = new JComboBox<String>();
 		
 		listGrades.addItem("F");
 		listGrades.addItem("E");
@@ -108,9 +111,18 @@ public class PanelFiltres extends JPanel {
 		listGrades.addItem("B");
 		listGrades.addItem("A");
 		
-		panel.add(labelRech);
+		panel.add(labelRechGrade);
 		panel.add(listGrades);
 		
 		return panel;
+	}
+	
+	public String[] getChamps() {
+		String[] stringRech = new String[4];
+		stringRech[0] = textRech.getText().toString();
+		stringRech[1] = listCategories.getSelectedItem().toString();
+		stringRech[2] = listMarques.getSelectedItem().toString();
+		stringRech[3] = listGrades.getSelectedItem().toString();
+		return stringRech;
 	}
 }

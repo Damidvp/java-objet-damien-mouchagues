@@ -71,8 +71,13 @@ public class Stock {
 					allergenesProduit.add(new Allergene(unAllergene));
 				}
 				
-				listeProduitsFichier.add(new Produit(categorieProduit, marqueProduit, gradeProduit, energieProduit, graisseProduit, sucresProduit, fibresProduit,
-						proteinesProduit, ingredientsProduit, additifsProduit, allergenesProduit));
+				Produit produitToAdd = new Produit(categorieProduit, marqueProduit, gradeProduit, energieProduit, graisseProduit, sucresProduit, fibresProduit,
+						proteinesProduit, ingredientsProduit, additifsProduit, allergenesProduit);
+				if(listeProduitsFichier.size() == 0) {
+					produitToAdd.resetId();
+					produitToAdd.setId(0);
+				}
+				listeProduitsFichier.add(produitToAdd);
 			}
 		}
 		

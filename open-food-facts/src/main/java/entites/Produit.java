@@ -1,9 +1,12 @@
 package entites;
 
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Produit {
 	
+	private static final AtomicInteger ID_FACTORY = new AtomicInteger();
+	private int id;
 	private Categorie categorie;
 	private Marque marque;
 	private Character grade;
@@ -19,6 +22,7 @@ public class Produit {
 	public Produit(Categorie categorie, Marque marque, Character grade, Double energie100g, Double graisse100g,
 			Double sucres100g, Double fibres100g, Double proteines100g, ArrayList<Ingredient> listeIngredients,
 			ArrayList<Additif> listeAdditifs, ArrayList<Allergene> listeAllergenes) {
+		this.setId(ID_FACTORY.incrementAndGet());
 		this.categorie = categorie;
 		this.marque = marque;
 		this.grade = grade;
@@ -122,10 +126,28 @@ public class Produit {
 
 	@Override
 	public String toString() {
-		return "Produit [categorie=" + categorie.toString() + ", marque=" + marque.toString() + ", grade=" + grade + ", energie100g="
+		return "Produit [id=" + id + ", categorie=" + categorie.toString() + ", marque=" + marque.toString() + ", grade=" + grade + ", energie100g="
 				+ energie100g + ", graisse100g=" + graisse100g + ", sucres100g=" + sucres100g + ", fibres100g="
 				+ fibres100g + ", proteines100g=" + proteines100g + ", listeIngredients=" + listeIngredients.toString()
 				+ ", listeAdditifs=" + listeAdditifs.toString() + ", listeAllergenes=" + listeAllergenes.toString() + "]";
+	}
+
+	/** Getter
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
+	}
+
+	/** Setter
+	 * @param id the id to set
+	 */
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public void resetId() {
+		ID_FACTORY.set(0);
 	}
 	
 	
